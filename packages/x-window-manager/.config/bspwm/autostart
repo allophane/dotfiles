@@ -37,6 +37,7 @@ xset -dpms &
 xbacklight -set 15 &
 ## Panel. The default is lemonbar script. Xfce4-panel can be more 
 ## easily configurable if you prefer that. Not installed by default
+run_once polybar-launch-main
 #run_once xfce4-panel -d
 #lemonpanel &
 #limepanel &

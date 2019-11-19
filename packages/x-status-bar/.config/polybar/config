@@ -1,0 +1,203 @@
+[colors]
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+
+background-alt = ${xrdb:color7}
+background-unf = ${xrdb:color0}
+;background = #212E36
+;background = #FF0084
+;it's ARGB so "cfl" is for transparency
+; background-alt = #cf3C5A46
+background-mod0 = #cf3C5A46
+background-mod1 = #cf546E53
+background-mod2 = #cf708963
+background-alrt = #FF0084
+
+;foreground = #F3F3BA
+foreground-alt = ${xrdb:color0}
+
+primary = ${xrdn:color14}
+secondary = ${xrdn:color15}
+
+[bar/common]
+
+width = 100%
+height = 30
+offset-x = 0%
+offset-y = 0
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #ff0084
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = DejaVu Sans Mono:size=11;1
+
+; tray-position = hidden
+tray-padding = 11
+tray-transparent = true
+tray-offset-y = 22
+tray-offset-x = -0
+tray-maxsize = 18
+tray-detached = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+wm-restack = bspwm
+
+[bar/main]
+inherit = bar/common
+
+bottom = true
+
+modules-left = workspaces
+modules-center = xwindow
+modules-right =  xkeyboard battery date
+
+[module/xwindow]
+type = internal/xwindow
+
+format = <label>
+
+label = %title%
+label-maxlen = 50
+
+[module/workspaces]
+
+type = internal/bspwm
+
+; pin-workspaces = true
+;
+; strip-wsnumbers = true
+
+; label-separator = |
+; label-separator-padding = 1
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused = %name%
+label-focused-foreground = ${colors.foreground-alt}
+label-focused-background = ${colors.background-alt}
+label-focused-padding = 1
+; label-focused-underline = #fba922
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = %name%
+label-occupied-padding = 1
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = 
+label-empty-padding = 1
+label-empty-underline = #555555
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %name%
+label-urgent-foreground = #000000
+label-urgent-background = ${colors.background-alrt}
+label-urgent-padding = 1
+
+[module/date]
+type = internal/date
+interval = 5
+
+; date =
+; date-alt = "%Y-%m-%d"
+;
+; time = "%H:%M"
+; time-alt = %H:%M
+;
+; format-padding = 2
+
+format = <label>
+label-padding = 1
+
+time = %R
+
+label = %{A1:gsimplecal & disown:} %{A3:gsimplecal & disown:} %time%%{A} %{A}
+
+;lable = %time%
+
+;
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+
+; ramp-capacity-0 = 
+; ramp-capacity-1 = 
+; ramp-capacity-2 = 
+; ramp-capacity-3 = 
+; ramp-capacity-4 = 
+
+; format-discharging = <ramp-capacity> <label-discharging>
+
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+; format-prefix = " "
+
+format-padding = 2
+
+label-layout = %layout%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

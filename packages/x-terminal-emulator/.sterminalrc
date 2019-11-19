@@ -1,4 +1,0 @@
-#!/bin/dash
-#~/.sterminalrc
-# see man st for possible options to set.
-export font="xos4 Terminus:size=12"

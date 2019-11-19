@@ -46,13 +46,15 @@ module-margin-right = 0
 font-0 = DejaVu Sans Mono:size=11;1
 
 ; tray-position = hidden
-tray-padding = 11
-tray-transparent = true
-tray-offset-y = 22
-tray-offset-x = -0
-tray-maxsize = 18
-tray-detached = true
-;tray-background = #0063ff
+tray-position = right
+tray-padding = 0
+; tray-transparent = true
+tray-offset-y = 0
+tray-offset-x = 0
+; tray-maxsize = 18
+; tray-detached = false
+; tray-scale = 1
+; tray-background = #ff0084
 
 ;wm-restack = bspwm
 wm-restack = bspwm

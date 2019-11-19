@@ -6,16 +6,15 @@ export PANEL_HEIGHT
 
 #This creates negative padding equal to window gap so that gaps are shown only between windows and not on desktop edges.
 bspc config window_gap $gap;
-bspc config top_padding $(($PANEL_HEIGHT-$gap))
+bspc config top_padding -$gap
 bspc config left_padding -$gap
 bspc config right_padding -$gap
-bspc config bottom_padding -$gap
+bspc config bottom_padding $PANEL_HEIGHT
 
 #Various settings
 bspc config gapless_monocle     false #Default setup uses negative padding, and gapless monocle looks really weird like that
 bspc config borderless_monocle  true
 bspc config single_monocle true
-bspc config paddingless_monocle false
 #bspc config ignore_ewmh_focus      true
 #bspc config initial_polarity second_child
 bspc config remove_disabled_monitors true
@@ -63,7 +62,6 @@ bspc rule -a transmission-gtk state=pseudo_tiled
 bspc rule -a conky sticky=on manage=off lower=on
 bspc rule -a astime sticky=on
 bspc rule -a yad state=floating
-bspc rule -a Docky layer=above border=off manage=on
 bspc rule -a Plank layer=above border=off manage=on
 bspc rule -a wbar layer=above
 bspc rule -a dockbarx layer=above
@@ -81,8 +79,6 @@ bspc rule -a '*:soffice' state=tiled
 #bspc rule -a calibre desktop=II
 #bspc rule -a geany desktop=II
 #bspc rule -a deluge desktop=III
-bspc rule -a 9menu border=off manage=off
-bspc rule -a tint2 border=off manage=off
 #bspc desktop I --layout monocle
 #bspc desktop II --layout monocle
 
@@ -105,11 +101,9 @@ bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 #bspc config external_rules_command /usr/bin/adjust-new-window
 
 ##Autostart apps
-#Keybindings daemon
-#sxhkd &
 #Source autostartfile. Uncomment this if you use bspwm-git
 #. $HOME/.config/bspwm/autostart
-# limepanel &
+
 # Alter compton settings if using intel graphics
 GRAPHIC_CARD=$(lspci | grep -i "vga" | sed 's/.*://' | sed 's/(.*//' | sed 's/^[ \t]*//')
 if [[ $(echo $GRAPHIC_CARD | grep -i 'intel\|lenovo') != "" ]]; then MCODE='initrd=\intel-ucode.img'

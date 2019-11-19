@@ -1,12 +1,16 @@
 PACKAGES ?= \
-	bspwm \
-	git \
-	misc \
-	sxhkd \
-	tmux \
-	vim \
-	xorg \
-	zsh
+	shell \
+	terminal-multiplexer \
+	text-editor \
+	unsorted \
+	x-compositor \
+	x-display-server \
+	x-dynamic-menu \
+	x-hotkey-daemon \
+	x-notification-daemon \
+	x-status-bar \
+	x-terminal-emulator \
+	x-window-manager
 
 PACKAGES_DIR ?= packages
 DIST_DIR ?= dist

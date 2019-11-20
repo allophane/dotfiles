@@ -1,0 +1,7 @@
+! vim: filetype=xdefaults
+
+! Enable the extended coloring options
+rofi.color-enabled: true
+
+! Path to the new theme file format
+rofi.theme: themes/nord-full

@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+ANS=$(echo " Logout| Reboot| Shutdown" | \
+    rofi -sep "|" -dmenu -i -p 'Session ' "" -width 20 \
+    -hide-scrollbar -eh 1 -line-padding 5 -padding 50 -lines 4)
+case "$ANS" in
+    *Logout) loginctl terminate-session $(loginctl session-status | head -n 1 | awk '{print $1}') ;;
+    *Reboot) systemctl reboot ;;
+    *Shutdown) systemctl poweroff
+esac
+;;
